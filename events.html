@@ -20,7 +20,13 @@
           </span>
         </a>
 
-        <nav class="main-nav" aria-label="Main navigation">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a class="active" href="events.html">Events</a>
           <a href="quiz.html">Quiz</a>
@@ -61,6 +67,7 @@
           <ul class="check-list">
             <li>Annual renewable energy expo with student projects and industry speakers.</li>
             <li>Inter-college quiz and innovation challenge on sustainable engineering.</li>
+            <li>Dahanu Industrial Visit 🏭</li>
             <li>Field visits to solar parks, hydrogen facilities, and smart-grid installations.</li>
           </ul>
         </div>
@@ -94,21 +101,43 @@
           <div>
             <h4>Connect With Us</h4>
             <div class="social-row">
-              <span class="social">f</span>
-              <span class="social">in</span>
-              <span class="social">◎</span>
-              <span class="social">▶</span>
+              <a class="social" href="https://www.instagram.com/the_energy_club_dbitofficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+              </a>
+              <a class="social" href="https://www.linkedin.com/company/energy-club-dbit/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+              <span class="social" aria-label="Facebook">f</span>
+              <span class="social" aria-label="YouTube">▶</span>
             </div>
           </div>
 
           <div>
             <h4>Contact</h4>
-            <div class="footer-email">energyclub@bit.in</div>
+            <div class="footer-email">energyclub.dbit@gmail.com</div>
           </div>
         </div>
 
         <div class="footer-bottom">© 2024 Energy Club, BIT, All Rights Reserved.</div>
       </div>
     </footer>
+
+    <script>
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      const navLinks = mainNav.querySelectorAll('a');
+
+      menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('active');
+          menuToggle.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
   </body>
 </html>

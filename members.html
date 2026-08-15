@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page-members">
     <header class="topbar">
       <div class="container">
         <a href="index.html" class="brand" aria-label="Energy Club home">
@@ -20,7 +20,13 @@
           </span>
         </a>
 
-        <nav class="main-nav" aria-label="Main navigation">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="events.html">Events</a>
           <a href="quiz.html">Quiz</a>
@@ -41,28 +47,63 @@
       </section>
 
       <div class="container page-content">
-        <div class="card-grid">
-          <article class="card">
-            <h3>Faculty Mentor</h3>
-            <p>Provides direction, support, and mentorship for club growth, technical excellence, and strategic collaboration.</p>
-          </article>
-          <article class="card">
-            <h3>Project Leads</h3>
-            <p>Coordinate sustainability campaigns, technical workshops, and student-led energy projects across domains.</p>
-          </article>
-          <article class="card">
-            <h3>Operations Team</h3>
-            <p>Manage event planning, member communication, and the smooth execution of club activities.</p>
-          </article>
-        </div>
+        <div class="members-grid">
+          <div class="member-card">
+            <div class="member-photo">
+              <img src="images/1.jpeg" alt="Saravanavel" />
+            </div>
+            <h3 class="member-name">Saravanavel (3rd Year)</h3>
+            <p class="member-position">Chairperson</p>
+          </div>
 
-        <div class="strip">
-          <h2 class="centered">Leadership</h2>
-          <ul class="check-list">
-            <li>Student coordinators lead each major event and innovation initiative within the club.</li>
-            <li>Core members contribute to technical sessions, audits, and student outreach programmes.</li>
-            <li>Faculty collaboration helps maintain quality, mentorship, and long-term development.</li>
-          </ul>
+          <div class="member-card">
+            <div class="member-photo">
+              <img src="images/2.png" alt="Aditya" />
+            </div>
+            <h3 class="member-name">Aditya (3rd Year)</h3>
+            <p class="member-position">Vice Chairperson</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo">
+              <img src="images/3.jpeg" alt="Gopinath" />
+            </div>
+            <h3 class="member-name">Gopinath (3rd Year)</h3>
+            <p class="member-position">Treasurer</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo">
+              <img src="images/Hijra.jpg" alt="Faizan" />
+            </div>
+            <h3 class="member-name">Faizan (3rd Year)</h3>
+            <p class="member-position">Technical Head</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo">
+              <img src="images/5.png" alt="Siraj" />
+            </div>
+            <h3 class="member-name">Siraj Ahmed (3rd Year)</h3>
+            <p class="member-position">Documentation & Design Head</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo">
+              <img src="images/6.png" alt="Lavkush" />
+            </div>
+            <h3 class="member-name">Lavkush (3rd Year)</h3>
+            <p class="member-position">Social Media Head</p>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo">
+              <img src="images/6.png" alt="Ralston" />
+            </div>
+            <h3 class="member-name">Ralston (3rd Year)</h3>
+            <p class="member-position">IV and Seminar Head</p>
+          </div>
+            
         </div>
       </div>
     </main>
@@ -94,21 +135,43 @@
           <div>
             <h4>Connect With Us</h4>
             <div class="social-row">
-              <span class="social">f</span>
-              <span class="social">in</span>
-              <span class="social">◎</span>
-              <span class="social">▶</span>
+              <a class="social" href="https://www.instagram.com/the_energy_club_dbitofficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+              </a>
+              <a class="social" href="https://www.linkedin.com/company/energy-club-dbit/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+              <span class="social" aria-label="Facebook">f</span>
+              <span class="social" aria-label="YouTube">▶</span>
             </div>
           </div>
 
           <div>
             <h4>Contact</h4>
-            <div class="footer-email">energyclub@bit.in</div>
+            <div class="footer-email">energyclub.dbit@gmail.com</div>
           </div>
         </div>
 
         <div class="footer-bottom">© 2024 Energy Club, BIT, All Rights Reserved.</div>
       </div>
     </footer>
+
+    <script>
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      const navLinks = mainNav.querySelectorAll('a');
+
+      menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('active');
+          menuToggle.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
   </body>
 </html>
