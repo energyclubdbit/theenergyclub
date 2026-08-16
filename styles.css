@@ -793,8 +793,9 @@ img { max-width: 100%; display: block; }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
 }
 
 .card {
@@ -806,8 +807,72 @@ img { max-width: 100%; display: block; }
   border-width: 0.2cap;
 }
 
+.card-event {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  text-align: left;
+  background: rgba(174, 221, 170, 0.25);
+  border: 2px solid rgba(0, 0, 0, 0.952);
+  border-radius: 0px;
+  padding: 15px 15px;
+  box-shadow: inset 0 1px 0 rgba(11, 2, 2, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-photo {
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.952);
+  border-radius: 0px;
+  overflow: hidden;
+  margin-bottom: -10px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-date {
+  font-family: "Oswald", "Poppins", sans-serif;
+  font-size: 14px;
+  margin-top: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 1px;
+}
+
+.event-name {
+  font-family: "Oswald", "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: -15px;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.event-venue {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(12, 31, 34, 0.8);
+  margin-top: -7px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.event-price {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(12, 31, 34, 0.8);
+  margin-top: -7px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
 .card h3 {
-  margin: 0 0 10px;
+  margin: 0px;
   font-size: 1.36rem;
   letter-spacing: -0.05em;
 }
@@ -931,19 +996,41 @@ img { max-width: 100%; display: block; }
 
 .member-name {
   font-family: "Oswald", "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--text-dark);
   margin: 0 0 8px 0;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .member-position {
   font-family: "Poppins", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(12, 31, 34, 0.8);
+  margin-bottom: 15px;
+  margin-top: -0px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.member-year {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 12px;
   font-weight: 500;
   color: rgba(12, 31, 34, 0.8);
-  margin: 0;
+  margin-bottom: 20px;
+  margin-top: -7px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.member-quote {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 200;
+  color: rgba(12, 31, 34, 0.8);
+  margin-top: 15px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
