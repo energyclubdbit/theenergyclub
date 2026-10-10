@@ -52,13 +52,44 @@
         <div class="strip">
           <h2 class="centered">Upcoming Highlights</h2>
           <ul class="check-list">
-            <li>Industrial Visit 🏭</li>
+            <li>Industrial Visit 🏭 in Mumbai</li>
           </ul>
         </div>
         <h1></h1>  
 
         <div class="card-grid">
 
+          <div class="card-event">
+            <div class="event-photo">
+              <img src="images/boilerindia_26.jpeg" alt="h-event" />
+            </div>
+            <h3 class="event-date">10th October 2026</h3>
+            <p class="event-name">Boiler India Exhibition 2026 Visit</p>
+            <p class="event-venue">Navi Mumbai, Vashi</p>
+            <p class="event-price">Free</p>
+            <p class="event-description" hidden>              
+              <strong>Student Feedback</strong><br>
+              The Boilers India Exhibition received positive feedback from students, who appreciated the opportunity to explore modern boiler technologies, HVAC systems, and industrial equipment. Students valued the practical learning experience, interaction with industry professionals, and insights into real-world applications of mechanical engineering.
+              <br><br>
+              <strong>Visit Summary</strong><br>
+              The Energy Club organized a visit to the <strong>Boilers India Exhibition</strong>, providing students with valuable exposure to the latest advancements in boiler technology, HVAC systems, and industrial equipment. The visit helped students understand practical industrial applications, explore innovative engineering solutions, and interact with industry professionals, bridging the gap between classroom learning and real-world engineering practices.
+              <br><br>
+              The visit helped students connect concepts from thermodynamics, heat transfer, fluid mechanics, and power plant engineering with real industrial applications while gaining awareness of industrial safety, maintenance, energy efficiency, and environmental management.
+              <br><br>
+              <span class="boiler-india-photos">
+                <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 1"><img src="images/boilerindia_1.png" alt="Boiler India Exhibition 2026 visit photo 1" /></button>
+                <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 2"><img src="images/boilerindia_2.png" alt="Boiler India Exhibition 2026 visit photo 2" /></button>
+                <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 3"><img src="images/boilerindia_3.png" alt="Boiler India Exhibition 2026 visit photo 3" /></button>
+              </span>
+            </p>
+
+
+
+            </p>
+            <button class="know-more-button" type="button" aria-haspopup="dialog" aria-controls="event-details">Know more</button>
+          </div>
+
+          
           <div class="card-event">
             <div class="event-photo">
               <img src="images/adani_iv.jpeg" alt="h-event" />
@@ -351,6 +382,10 @@
         <p class="event-dialog-description"></p>
       </div>
     </div>
+    <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged visit photo" hidden>
+      <button class="image-lightbox-close" type="button" aria-label="Close enlarged photo">&times;</button>
+      <img class="image-lightbox-image" alt="" />
+    </div>
 
     <script>
       const menuToggle = document.getElementById('menuToggle');
@@ -364,7 +399,17 @@
       const dialogVenue = eventDetails.querySelector('.dialog-venue');
       const dialogPrice = eventDetails.querySelector('.dialog-price');
       const dialogDescription = eventDetails.querySelector('.event-dialog-description');
+      const imageLightbox = document.getElementById('image-lightbox');
+      const lightboxImage = imageLightbox.querySelector('.image-lightbox-image');
+      const lightboxCloseButton = imageLightbox.querySelector('.image-lightbox-close');
       let activeKnowMoreButton;
+      let activePhotoButton;
+
+      const closeImageLightbox = () => {
+        imageLightbox.hidden = true;
+        lightboxImage.removeAttribute('src');
+        activePhotoButton.focus();
+      };
 
       menuToggle.addEventListener('click', () => {
         mainNav.classList.toggle('active');
@@ -403,12 +448,32 @@
 
       dialogCloseButton.addEventListener('click', closeEventDetails);
 
+      dialogDescription.addEventListener('click', event => {
+        const photoButton = event.target.closest('.boiler-photo-button');
+        if (!photoButton) return;
+
+        activePhotoButton = photoButton;
+        const photo = photoButton.querySelector('img');
+        lightboxImage.src = photo.src;
+        lightboxImage.alt = photo.alt;
+        imageLightbox.hidden = false;
+        lightboxCloseButton.focus();
+      });
+
+      lightboxCloseButton.addEventListener('click', closeImageLightbox);
+
+      imageLightbox.addEventListener('click', event => {
+        if (event.target === imageLightbox) closeImageLightbox();
+      });
+
       eventDetails.addEventListener('click', event => {
         if (event.target === eventDetails) closeEventDetails();
       });
 
       document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && !eventDetails.hidden) closeEventDetails();
+        if (event.key !== 'Escape') return;
+        if (!imageLightbox.hidden) closeImageLightbox();
+        else if (!eventDetails.hidden) closeEventDetails();
       });
     </script>
   </body>
