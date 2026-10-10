@@ -75,12 +75,6 @@
               The Energy Club organized a visit to the <strong>Boilers India Exhibition</strong>, providing students with valuable exposure to the latest advancements in boiler technology, HVAC systems, and industrial equipment. The visit helped students understand practical industrial applications, explore innovative engineering solutions, and interact with industry professionals, bridging the gap between classroom learning and real-world engineering practices.
               <br><br>
               The visit helped students connect concepts from thermodynamics, heat transfer, fluid mechanics, and power plant engineering with real industrial applications while gaining awareness of industrial safety, maintenance, energy efficiency, and environmental management.
-              <br><br>
-              <span class="boiler-india-photos">
-                <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 1"><img src="images/boilerindia_1.png" alt="Boiler India Exhibition 2026 visit photo 1" /></button>
-                <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 2"><img src="images/boilerindia_2.png" alt="Boiler India Exhibition 2026 visit photo 2" /></button>
-                <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 3"><img src="images/boilerindia_3.png" alt="Boiler India Exhibition 2026 visit photo 3" /></button>
-              </span>
             </p>
 
 
@@ -386,6 +380,14 @@
       <button class="image-lightbox-close" type="button" aria-label="Close enlarged photo">&times;</button>
       <img class="image-lightbox-image" alt="" />
     </div>
+    <template id="boiler-india-photo-gallery">
+      <br><br>
+      <span class="boiler-india-photos">
+        <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 1"><img src="images/boilerindia_1.png" alt="Boiler India Exhibition 2026 visit photo 1" /></button>
+        <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 2"><img src="images/boilerindia_2.png" alt="Boiler India Exhibition 2026 visit photo 2" /></button>
+        <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 3"><img src="images/boilerindia_3.png" alt="Boiler India Exhibition 2026 visit photo 3" /></button>
+      </span>
+    </template>
 
     <script>
       const menuToggle = document.getElementById('menuToggle');
@@ -399,6 +401,7 @@
       const dialogVenue = eventDetails.querySelector('.dialog-venue');
       const dialogPrice = eventDetails.querySelector('.dialog-price');
       const dialogDescription = eventDetails.querySelector('.event-dialog-description');
+      const boilerIndiaPhotoGallery = document.getElementById('boiler-india-photo-gallery');
       const imageLightbox = document.getElementById('image-lightbox');
       const lightboxImage = imageLightbox.querySelector('.image-lightbox-image');
       const lightboxCloseButton = imageLightbox.querySelector('.image-lightbox-close');
@@ -440,6 +443,9 @@
           dialogVenue.textContent = eventCard.querySelector('.event-venue').textContent.trim();
           dialogPrice.textContent = eventCard.querySelector('.event-price').textContent.trim();
           dialogDescription.innerHTML = eventCard.querySelector('.event-description').innerHTML.trim();
+          if (eventCard.querySelector('.event-name').textContent.includes('Boiler India')) {
+            dialogDescription.append(boilerIndiaPhotoGallery.content.cloneNode(true));
+          }
           eventDetails.hidden = false;
           document.body.classList.add('dialog-open');
           dialogCloseButton.focus();
