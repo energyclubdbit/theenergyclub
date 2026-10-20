@@ -807,6 +807,23 @@ img { max-width: 100%; display: block; }
   border-width: 0.2cap;
 }
 
+.feedback-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.feedback-card-copy h2 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+
+.feedback-card-copy p {
+  margin: 0;
+}
+
 .card-event {
   display: flex;
   flex-direction: column;
@@ -1386,6 +1403,11 @@ body.dialog-open {
 
   .btn {
     width: 100%;
+  }
+
+  .feedback-card {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .mentor-card {
