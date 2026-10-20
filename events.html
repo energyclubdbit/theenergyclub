@@ -61,6 +61,30 @@
 
           <div class="card-event">
             <div class="event-photo">
+              <img src="images/nuclear_fission_26.png" alt="h-event" />
+            </div>
+            <h3 class="event-date">14th October 2026</h3>
+            <p class="event-name">Application of Nuclear and its Technologies</p>
+            <p class="event-venue"> DBIT Wing C Mech CR6</p>
+            <p class="event-price">Free</p>
+            <p class="event-description" hidden>              
+              <strong>Student Feedback</strong><br>
+              The seminar received positive feedback from students, with most participants rating it Excellent and the remaining participants rating it Good. Students appreciated the informative session and gained valuable insights into nuclear technologies and their applications. One suggestion was to conduct future seminars in a seminar hall to ensure a more comfortable learning environment.
+              <br><br>
+              Students also recommended future seminars on emerging technologies, cryogenics, production, pipe valves, steel plants, and the marine sector. Overall, the feedback reflected the seminar's effectiveness in enhancing students' technical knowledge and industrial awareness.
+              <br><br>
+              <strong>Seminar Summary</strong><br>
+              The Energy Club organized a seminar on <strong>“Application of Nuclear and Its Technologies”</strong>, providing students with valuable insights into nuclear energy, its scientific principles, and its applications in electricity generation. The session covered topics such as nuclear reactions, reactor core systems, different types of nuclear reactors, the working of nuclear power stations, and the organizational structure of the Department of Atomic Energy.
+              <br><br>
+              The seminar helped students connect concepts from thermodynamics, heat transfer, and power plant engineering with practical applications in nuclear power generation. It also highlighted radiation protection, safety procedures, regulatory inspections, India's nuclear energy scenario, and career opportunities in nuclear engineering, plant maintenance, equipment inspection, and research, enhancing students' understanding of safe and efficient nuclear technologies.
+            </p>
+            </p>
+            <button class="know-more-button" type="button" aria-haspopup="dialog" aria-controls="event-details">Know more</button>
+          </div>
+
+
+          <div class="card-event">
+            <div class="event-photo">
               <img src="images/boilerindia_26.jpeg" alt="h-event" />
             </div>
             <h3 class="event-date">10th October 2026</h3>
@@ -76,9 +100,6 @@
               <br><br>
               The visit helped students connect concepts from thermodynamics, heat transfer, fluid mechanics, and power plant engineering with real industrial applications while gaining awareness of industrial safety, maintenance, energy efficiency, and environmental management.
             </p>
-
-
-
             </p>
             <button class="know-more-button" type="button" aria-haspopup="dialog" aria-controls="event-details">Know more</button>
           </div>
@@ -383,11 +404,20 @@
     <template id="boiler-india-photo-gallery">
       <br><br>
       <span class="boiler-india-photos">
-        <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 1"><img src="images/boilerindia_1.png" alt="Boiler India Exhibition 2026 visit photo 1" /></button>
-        <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 2"><img src="images/boilerindia_2.png" alt="Boiler India Exhibition 2026 visit photo 2" /></button>
-        <button class="boiler-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 3"><img src="images/boilerindia_3.png" alt="Boiler India Exhibition 2026 visit photo 3" /></button>
+        <button class="event-gallery-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 1"><img src="images/boilerindia_1.png" alt="Boiler India Exhibition 2026 visit photo 1" /></button>
+        <button class="event-gallery-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 2"><img src="images/boilerindia_2.png" alt="Boiler India Exhibition 2026 visit photo 2" /></button>
+        <button class="event-gallery-photo-button" type="button" aria-label="Enlarge Boiler India Exhibition visit photo 3"><img src="images/boilerindia_3.png" alt="Boiler India Exhibition 2026 visit photo 3" /></button>
       </span>
     </template>
+    <template id="nuclear-fission-photo-gallery">
+      <br><br>
+      <span class="boiler-india-photos">
+        <button class="event-gallery-photo-button" type="button" aria-label="Enlarge Nuclear Fission seminar photo 1"><img src="images/Nuclear_fission_26 (1).png" alt="Nuclear Fission seminar photo 1" /></button>
+        <button class="event-gallery-photo-button" type="button" aria-label="Enlarge Nuclear Fission seminar photo 2"><img src="images/Nuclear_fission_26 (2).png" alt="Nuclear Fission seminar photo 2" /></button>
+        <button class="event-gallery-photo-button" type="button" aria-label="Enlarge Nuclear Fission seminar photo 3"><img src="images/Nuclear_fission_26 (3).png" alt="Nuclear Fission seminar photo 3" /></button>
+      </span>
+    </template>
+    
 
     <script>
       const menuToggle = document.getElementById('menuToggle');
@@ -402,6 +432,7 @@
       const dialogPrice = eventDetails.querySelector('.dialog-price');
       const dialogDescription = eventDetails.querySelector('.event-dialog-description');
       const boilerIndiaPhotoGallery = document.getElementById('boiler-india-photo-gallery');
+      const nuclearFissionPhotoGallery = document.getElementById('nuclear-fission-photo-gallery');
       const imageLightbox = document.getElementById('image-lightbox');
       const lightboxImage = imageLightbox.querySelector('.image-lightbox-image');
       const lightboxCloseButton = imageLightbox.querySelector('.image-lightbox-close');
@@ -443,8 +474,11 @@
           dialogVenue.textContent = eventCard.querySelector('.event-venue').textContent.trim();
           dialogPrice.textContent = eventCard.querySelector('.event-price').textContent.trim();
           dialogDescription.innerHTML = eventCard.querySelector('.event-description').innerHTML.trim();
-          if (eventCard.querySelector('.event-name').textContent.includes('Boiler India')) {
+          const eventName = eventCard.querySelector('.event-name').textContent;
+          if (eventName.includes('Boiler India')) {
             dialogDescription.append(boilerIndiaPhotoGallery.content.cloneNode(true));
+          } else if (eventName.includes('Nuclear')) {
+            dialogDescription.append(nuclearFissionPhotoGallery.content.cloneNode(true));
           }
           eventDetails.hidden = false;
           document.body.classList.add('dialog-open');
@@ -455,7 +489,7 @@
       dialogCloseButton.addEventListener('click', closeEventDetails);
 
       dialogDescription.addEventListener('click', event => {
-        const photoButton = event.target.closest('.boiler-photo-button');
+        const photoButton = event.target.closest('.event-gallery-photo-button');
         if (!photoButton) return;
 
         activePhotoButton = photoButton;
